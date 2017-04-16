@@ -1,0 +1,32 @@
+enum MessageType {
+  Work = 1;
+  Ping = 2;
+  Connect = 3;
+  Disconnect = 4;
+  Shutdown = 5;
+  ShuttingDown = 6;
+  ShutdownComplete = 7;
+  Ack = 8;
+  Nack = 9;
+}
+
+enum NodeType {
+  GranterSupervisor = 1;
+  Granter = 2;
+  BorrowerSupervisor = 3;
+  Borrower = 4;
+}
+
+message Base {
+  bytes sender = 1;
+  int64 timestamp = 2;
+  enum NodeType node_type = 3;
+  enum MessageType message_type = 4;
+  repeated Work work = 5;
+}
+
+message Work {
+  bytes id = 1;
+  int64 created = 2;
+  int32 retries = 3;
+}
