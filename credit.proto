@@ -1,27 +1,31 @@
+syntax = "proto3";
+
+package cheshbown;
+
 enum MessageType {
-  Work = 1;
-  Ping = 2;
-  Connect = 3;
-  Disconnect = 4;
-  Shutdown = 5;
-  ShuttingDown = 6;
-  ShutdownComplete = 7;
-  Ack = 8;
-  Nack = 9;
+  WORK = 0;
+  PING = 1;
+  CONNECT = 2;
+  DISCONNECT = 3;
+  SHUTDOWN = 4;
+  SHUTTINGDOWN = 5;
+  SHUTDOWNCOMPLETE = 6;
+  ACK = 7;
+  NACK = 8;
 }
 
 enum NodeType {
-  GranterSupervisor = 1;
-  Granter = 2;
-  BorrowerSupervisor = 3;
-  Borrower = 4;
+  GranterSupervisor = 0;
+  Granter = 1;
+  BorrowerSupervisor = 2;
+  Borrower = 3;
 }
 
 message Base {
   bytes sender = 1;
   int64 timestamp = 2;
-  enum NodeType node_type = 3;
-  enum MessageType message_type = 4;
+  NodeType node_type = 3;
+  MessageType message_type = 4;
   repeated Work work = 5;
 }
 
