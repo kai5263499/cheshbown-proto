@@ -1,0 +1,12 @@
+language: go
+sudo: false
+go:
+  - 1.8
+before_script:
+  - ./install_protoc.sh
+  - export PATH=$PATH:$HOME/soft/protobuf:$GOPATH/bin
+install:
+  - go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+  - go get github.com/mwitkow/go-proto-validators/protoc-gen-govalidators
+script:
+  - protoc --proto_path=${GOPATH}/src --proto_path=${GOPATH}/src/github.com/gogo/protobuf/protobuf --proto_path=. --gogo_out=. --govalidators_out=gogoimport=true:. *.proto

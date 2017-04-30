@@ -1,3 +1,5 @@
+.idea
 bin
 pkg
 src/github.com
+credit.validator.pb.go
