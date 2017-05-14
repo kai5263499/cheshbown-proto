@@ -35,7 +35,7 @@ message Base {
   NodeType node_type = 3;
   MessageType message_type = 4;
   repeated Work work = 5;
-  Gossip gossip = 6;
+  repeated Worker workers = 6;
 }
 
 message Work {
@@ -52,9 +52,4 @@ message Worker {
   NodeType node_type = 2;
   int64 last_seen = 3;
   NodeStatus status = 4;
-}
-
-message Gossip {
-  int64 timestamp = 1;
-  repeated Worker workers = 2;
 }
